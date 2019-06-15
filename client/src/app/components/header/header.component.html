@@ -1,3 +1,28 @@
-<p>
-  header works!
-</p>
+<header>
+	<div class="container header-container">
+		<a routerLink="" class="header-brand">
+			ABlog
+		</a>
+		<nav>
+			<ul class="nav-list">
+				<li class="nav-item">
+					<a routerLink="/login" routerLinkActive="active" class="nav-link mdc-button">
+						<span class="mdc-button__label">Login</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a routerLink="/register" routerLinkActive="active" class="nav-link mdc-button">
+						<span class="mdc-button__label">Register</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<div class="header-add-post">
+		<div class="container">
+			<a routerLink="/add-post">
+				<span class="mdi mdi-plus"></span>
+			</a>
+		</div>
+	</div>
+</header>

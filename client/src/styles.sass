@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+body, html
+	font-family: 'Roboto', sans-serif
+	color: #333333
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+
+
+@font-face
+	font-family: "Material Design Icons"
+	font-display: fallback
+	src: url("assets/fonts/materialdesignicons-webfont.eot?v=3.3.92")
+	src: url("assets/fonts/materialdesignicons-webfont.eot?#iefix&v=3.3.92") format("embedded-opentype"), url("assets/fonts/materialdesignicons-webfont.woff2?v=3.3.92") format("woff2"), url("assets/fonts/materialdesignicons-webfont.woff?v=3.3.92") format("woff"), url("assets/fonts/materialdesignicons-webfont.ttf?v=3.3.92") format("truetype"), url("assets/fonts/materialdesignicons-webfont.svg?v=3.3.92#materialdesigniconsregular") format("svg")
+	font-weight: normal
+	font-style: normal
+
+.mdi:before,
+.mdi-set
+	display: inline-block
+	font: normal normal normal 24px/1 "Material Design Icons"
+	font-size: inherit
+	text-rendering: auto
+	line-height: inherit
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+
+.mdi-plus:before
+	content: "\F415"
