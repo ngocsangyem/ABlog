@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const port = 3000;
-const api = require("./routes/api.routes");
+const api = require("./routes/users/user.routes");
 const app = express();
 
 // conection string
@@ -14,7 +14,7 @@ mongoose.connect(db, err => {
 });
 
 // Call route
-import * as apiRouter from "./routes/api.routes";
+import * as apiRouter from "./routes/users/user.routes";
 
 // Handle json data
 app.use(bodyParser.json());
@@ -24,11 +24,12 @@ app.get("/", (req, res) => {
 });
 
 // Init app
-app.use("/api", [
-	apiRouter.addApi,
-	apiRouter.getApis,
-	apiRouter.getSingleApi,
-	apiRouter.router
+app.use("/users", [
+	apiRouter.registerUser,
+	apiRouter.loginUser,
+	apiRouter.getAllUser,
+	apiRouter.getSingleUser,
+	apiRouter.deleteUser
 ]);
 
 // app.use("/api", api);
