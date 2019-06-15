@@ -14,7 +14,8 @@ mongoose.connect(db, err => {
 });
 
 // Call route
-import * as apiRouter from "./routes/users/user.routes";
+import * as usersRouter from "./routes/users/user.routes";
+import * as articleRouter from "./routes/article/article.routes";
 
 // Handle json data
 app.use(bodyParser.json());
@@ -25,11 +26,18 @@ app.get("/", (req, res) => {
 
 // Init app
 app.use("/users", [
-	apiRouter.registerUser,
-	apiRouter.loginUser,
-	apiRouter.getAllUser,
-	apiRouter.getSingleUser,
-	apiRouter.deleteUser
+	usersRouter.registerUser,
+	usersRouter.loginUser,
+	usersRouter.getAllUser,
+	usersRouter.getSingleUser,
+	usersRouter.deleteUser
+]);
+
+app.use("/", [
+	articleRouter.getAllArticle,
+	articleRouter.getSingleArticle,
+	articleRouter.addArticle,
+	articleRouter.deleteArticle
 ]);
 
 // app.use("/api", api);

@@ -7,6 +7,9 @@ import { FooterComponent } from "./components/footer/footer.component";
 import { PostsComponent } from "./components/posts/posts.component";
 import { PostComponent } from "./components/posts/post/post.component";
 import { EditComponent } from "./components/posts/post/edit/edit.component";
+import { RegisterComponent } from "./components/header/register/register.component";
+import { LoginComponent } from "./components/header/login/login.component";
+import { AppRoutingModule } from "./app.routing";
 
 @NgModule({
 	declarations: [
@@ -15,9 +18,11 @@ import { EditComponent } from "./components/posts/post/edit/edit.component";
 		FooterComponent,
 		PostsComponent,
 		PostComponent,
-		EditComponent
+		EditComponent,
+		RegisterComponent,
+		LoginComponent
 	],
-	imports: [BrowserModule],
+	imports: [BrowserModule, AppRoutingModule],
 	providers: [],
 	bootstrap: [AppComponent]
 })
