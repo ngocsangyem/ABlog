@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app.routing';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -9,7 +12,6 @@ import { PostComponent } from './components/posts/post/post.component';
 import { EditComponent } from './components/posts/post/edit/edit.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
-import { AppRoutingModule } from './app.routing';
 import { AddPostComponent } from './components/posts/add-post/add-post.component';
 
 @NgModule({
@@ -24,7 +26,7 @@ import { AddPostComponent } from './components/posts/add-post/add-post.component
 		LoginComponent,
 		AddPostComponent
 	],
-	imports: [BrowserModule, AppRoutingModule],
+	imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
 	providers: [],
 	bootstrap: [AppComponent]
 })

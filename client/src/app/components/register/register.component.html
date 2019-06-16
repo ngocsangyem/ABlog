@@ -2,17 +2,17 @@
 	<h1>Register</h1>
 	<form class="register-form" action="" autocomplete="off">
 		<fieldset>
-			<input id="first" type="text" name="email" required>
+			<input [(ngModel)]="registerUserData.email" id="email" type="text" name="email" required>
 			<label for="email">Email</label>
 			<div class="after"></div>
 		</fieldset>
 		<fieldset>
-			<input id="password" type="password" name="password" required>
+			<input [(ngModel)]="registerUserData.password" id="password" type="password" name="password" required>
 			<label for="password">Password</label>
 			<div class="after"></div>
 		</fieldset>
 		<fieldset>
-			<button>Submit</button>
+			<button (click)="registerUser()" type="button">Submit</button>
 		</fieldset>
 	</form>
 </div>

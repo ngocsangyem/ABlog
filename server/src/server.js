@@ -1,31 +1,34 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const port = 3000;
-const api = require("./routes/users/user.routes");
+const api = require('./routes/users/user.routes');
 const app = express();
-
+const cors = require('cors');
 // conection string
-const db = "mongodb://admin:admin%40123@ds231517.mlab.com:31517/blogdb";
+const db = 'mongodb://admin:admin%40123@ds231517.mlab.com:31517/blogdb';
+
+// Cors
+app.use(cors());
 
 // Conect to database
 mongoose.connect(db, err => {
-	err ? console.log(err) : console.log("Conected to mongodb");
+	err ? console.log(err) : console.log('Conected to mongodb');
 });
 
 // Call route
-import * as usersRouter from "./routes/users/user.routes";
-import * as articleRouter from "./routes/article/article.routes";
+import * as usersRouter from './routes/users/user.routes';
+import * as articleRouter from './routes/article/article.routes';
 
 // Handle json data
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-	res.send("Hello World");
+app.get('/', (req, res) => {
+	res.send('Hello World');
 });
 
 // Init app
-app.use("/users", [
+app.use('/users', [
 	usersRouter.registerUser,
 	usersRouter.loginUser,
 	usersRouter.getAllUser,
@@ -33,7 +36,7 @@ app.use("/users", [
 	usersRouter.deleteUser
 ]);
 
-app.use("/", [
+app.use('/', [
 	articleRouter.getAllArticle,
 	articleRouter.getSingleArticle,
 	articleRouter.addArticle,
@@ -42,5 +45,5 @@ app.use("/", [
 
 // app.use("/api", api);
 app.listen(port, () => {
-	console.log("Server running on loclhost: " + port);
+	console.log('Server running on loclhost: ' + port);
 });

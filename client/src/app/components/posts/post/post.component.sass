@@ -1,0 +1,81 @@
+.post
+	padding: 0 15px
+	margin: 0 auto
+	margin-bottom: 1.5rem
+	@media (min-width: 992px)
+		max-width: 50%
+.post-container
+	display: flex
+	// align-items: center
+	background-color: #ffffff
+	border-radius: 20px
+	box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12)
+	text-decoration: none
+	overflow: hidden
+	flex-direction: column
+	position: relative
+	figure
+		@media (min-width: 500px)
+			flex: 0 0 40%
+			max-width: 40%
+	img
+		width: 100%
+		height: 100%
+	.post-decription
+		padding: 1rem
+		display: flex
+		flex-direction: column
+		justify-content: center
+		@media (min-width: 500px)
+			flex: 0 0 60%
+			max-width: 60%
+		h3, p
+			color: #333333
+		h3
+			font-size: 1.4rem
+			font-weight: 500
+			margin-bottom: .5rem
+		p
+			overflow: hidden
+			text-overflow: ellipsis
+			display: -webkit-box
+			-webkit-box-orient: vertical
+			-webkit-line-clamp: 4
+			max-height: 4.5rem
+	.post-detail
+		margin-top: .5rem
+		width: 120px
+		padding: .5rem
+		border-radius: 5px
+		text-align: center
+		color: #ffffff
+		background-color: #FFA726
+	.post-option
+		position: absolute
+		top: 10px
+		right: 10px
+		z-index: 2
+		span
+			font-size: 1.2rem
+			display: inline-block
+			color: #cccccc
+			transition: color .4s ease-in-out
+			&:not(:last-child)
+				margin-right: 1rem
+			&:hover
+				color: #FFA726
+	@media (min-width: 500px)
+		flex-direction: row
+		transition: transform .4s ease-in-out
+		figure
+			overflow: hidden
+		img
+			transition: transform .4s ease-in-out
+		.post-detail
+			transition: background-color .4s ease-in-out
+		&:hover
+			transform: translateY(-10px)
+			.post-detail
+				background-color: #FB8C00
+			img
+				transform: scale3d(1.1, 1.1, 1)
