@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class AuthService {
 	// back-end Url
 	private registerUrl = 'http://localhost:3000/users/register';
+	private loginUrl = 'http://localhost:3000/users/login';
 
 	constructor(private http: HttpClient) {}
 
@@ -14,7 +15,17 @@ export class AuthService {
 		/**
 		 * @param: back-end url
 		 * @param: user object
+		 * return Observable
 		 */
 		return this.http.post<any>(this.registerUrl, user);
+	}
+
+	loginUserService(user) {
+		/**
+		 * @param: back-end url
+		 * @param: user object
+		 * return Observable
+		 */
+		return this.http.post<any>(this.loginUrl, user);
 	}
 }

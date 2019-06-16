@@ -45,5 +45,5 @@ app.use('/', [
 
 // app.use("/api", api);
 app.listen(port, () => {
-	console.log('Server running on loclhost: ' + port);
+	console.log('Server running on localhost:' + port);
 });
