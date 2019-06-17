@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app.routing';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -13,6 +13,7 @@ import { EditComponent } from './components/posts/post/edit/edit.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AddPostComponent } from './components/posts/add-post/add-post.component';
+import { TokenInterceptorService } from './services/token-auth.service';
 
 @NgModule({
 	declarations: [
@@ -27,7 +28,13 @@ import { AddPostComponent } from './components/posts/add-post/add-post.component
 		AddPostComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-	providers: [],
+	providers: [
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: TokenInterceptorService,
+			multi: true
+		}
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -28,4 +28,13 @@ export class AuthService {
 		 */
 		return this.http.post<any>(this.loginUrl, user);
 	}
+
+	logged() {
+		// if true return true else false return false
+		return !!localStorage.getItem('token');
+	}
+
+	getToken() {
+		return localStorage.getItem('token');
+	}
 }
