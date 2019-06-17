@@ -1,7 +1,7 @@
-import express from "express";
+import express from 'express';
 const router = express.Router();
 
 /* add new article. */
-const addArticle = router.post("/", (req, res, next) => {});
+const addArticle = router.post('/', (req, res, next) => {});
 
 export default addArticle;
