@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 	loginUser() {
 		this.auth.loginUserService(this.loginUserData).subscribe(
 			res => {
-				console.log(res);
+				// console.log(res);
 				localStorage.setItem('token', res.token);
 				this.router.navigate(['/posts']);
 			},

@@ -10,14 +10,19 @@
 						<span class="mdc-button__label">Posts</span>
 					</a>
 				</li>
-				<li class="nav-item">
+				<li *ngIf="!auth.logged()" class="nav-item">
 					<a routerLink="/login" routerLinkActive="active" class="nav-link mdc-button">
 						<span class="mdc-button__label">Login</span>
 					</a>
 				</li>
-				<li class="nav-item">
+				<li *ngIf="!auth.logged()" class="nav-item">
 					<a routerLink="/register" routerLinkActive="active" class="nav-link mdc-button">
 						<span class="mdc-button__label">Register</span>
+					</a>
+				</li>
+				<li *ngIf="auth.logged()" class="nav-item">
+					<a class="nav-link mdc-button" (click)="auth.logoutUser()" style="cursor: pointer;">
+						<span class="mdc-button__label">Logout</span>
 					</a>
 				</li>
 			</ul>

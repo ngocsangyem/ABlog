@@ -1,8 +1,11 @@
 import express from 'express';
 const router = express.Router();
 
-/* GET list of all api. */
-const getAllArticle = router.get('/posts', (req, res, next) => {
+/**
+ * GET list of all api
+ * - Token is verify then the code will executed
+ */
+export const getAllArticle = router.get('/posts', (req, res, next) => {
 	let posts = [
 		{
 			_id: '1',
