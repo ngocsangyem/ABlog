@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PostsComponent } from './components/posts/posts.component';
-import { AddPostComponent } from './components/posts/add-post/add-post.component';
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
@@ -20,11 +19,6 @@ const routes: Routes = [
 	{
 		path: 'posts',
 		component: PostsComponent
-	},
-	{
-		path: 'add-post',
-		component: AddPostComponent,
-		canActivate: [AuthGuard]
 	}
 ];
 

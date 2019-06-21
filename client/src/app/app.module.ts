@@ -12,7 +12,6 @@ import { PostComponent } from './components/posts/post/post.component';
 import { EditComponent } from './components/posts/post/edit/edit.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
-import { AddPostComponent } from './components/posts/add-post/add-post.component';
 import { TokenInterceptorService } from './services/token-auth.service';
 
 @NgModule({
@@ -24,8 +23,7 @@ import { TokenInterceptorService } from './services/token-auth.service';
 		PostComponent,
 		EditComponent,
 		RegisterComponent,
-		LoginComponent,
-		AddPostComponent
+		LoginComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
 	providers: [

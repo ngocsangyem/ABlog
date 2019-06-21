@@ -46,7 +46,7 @@ app.use('/users', [
 	usersRouter.deleteUser
 ]);
 
-app.use('/article', [
+app.use('/posts', [
 	articleRouter.getAllArticle,
 	articleRouter.getSingleArticle,
 	articleRouter.addArticle,
