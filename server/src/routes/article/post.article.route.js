@@ -1,5 +1,6 @@
 import express from 'express';
 const router = express.Router();
+const Post = require('../../model/post');
 
 function verifyToken(req, res, next) {
 	// If headers don't have authorization
@@ -26,7 +27,22 @@ function verifyToken(req, res, next) {
  * - Token is verify then the code will executed
  */
 const addArticle = router.post('/add-post', verifyToken, (req, res, next) => {
-	return res.status(200).send('You are login!!!');
+	let postData = req.body;
+	let post = new Post(postData);
+
+	if (!post.title || post.image) {
+		res.status(400);
+		res.json({
+			Error: 'Some things wrong with data'
+		});
+	} else {
+		post.save((err, post) => {
+			if (err) {
+				console.log(err);
+			}
+			res.json(post);
+		});
+	}
 });
 
 export default addArticle;

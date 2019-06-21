@@ -15,7 +15,7 @@
 				View detail
 			</div>
 		</div>
-		<div class="post-option">
+		<div *ngIf="auth.logged()" class="post-option">
 			<span class="mdi mdi-circle-edit-outline"></span>
 			<span class="mdi mdi-delete"></span>
 		</div>
