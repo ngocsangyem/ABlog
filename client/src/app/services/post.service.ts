@@ -21,8 +21,6 @@ export class PostService {
 		console.log(newPost);
 
 		header.append('Content-Type', 'application/json');
-		return this.http
-			.post<any>(this.postsUrl, JSON.stringify(newPost))
-			.pipe(map(res => res.json()));
+		return this.http.post<any>(this.postsUrl, newPost);
 	}
 }
