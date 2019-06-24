@@ -11,9 +11,6 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class PostsComponent implements OnInit {
 	toggleForm = false;
-	title: string;
-	description: string;
-	image: string;
 	posts: Post[] = [];
 
 	constructor(private postService: PostService, private auth: AuthService) {}
@@ -47,5 +44,17 @@ export class PostsComponent implements OnInit {
 		this.postService
 			.onUpdatePost(post)
 			.subscribe(postUpdated => console.log(postUpdated));
+	}
+
+	onDeletePost(post) {
+		const postArray = this.posts;
+		this.postService.onDeletePost(post).subscribe(resDeletePost => {
+			for (let index = 0; index < postArray.length; index++) {
+				const postItem = postArray[index];
+				if (postItem._id === post._id) {
+					postArray.splice(index, 1);
+				}
+			}
+		});
 	}
 }

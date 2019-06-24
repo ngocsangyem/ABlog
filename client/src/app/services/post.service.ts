@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 })
 export class PostService {
 	private postsUrl = 'http://localhost:3000/posts';
-	private putUrl = 'http://localhost:3000/posts/';
+	private actionUrl = 'http://localhost:3000/posts/';
 	private posts: Post[];
 
 	constructor(private http: HttpClient) {}
@@ -27,10 +27,10 @@ export class PostService {
 		const header = new HttpHeaders();
 
 		header.append('Content-Type', 'application/json');
-		console.log(newPost);
+		return this.http.put<any>(this.actionUrl + newPost._id, newPost);
+	}
 
-		console.log(this.putUrl + newPost._id);
-
-		return this.http.put<any>(this.putUrl + newPost._id, newPost);
+	onDeletePost(post: Post) {
+		return this.http.delete<any>(this.actionUrl + post._id);
 	}
 }

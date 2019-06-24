@@ -17,7 +17,7 @@
 		</div>
 		<div *ngIf="auth.logged()" class="post-option">
 			<span class="mdi mdi-circle-edit-outline" (click)="editPostBtn()"></span>
-			<span class="mdi mdi-delete"></span>
+			<span class="mdi mdi-delete" (click)="deletePost()"></span>
 		</div>
 	</div>
 	<div class="container container-form" *ngIf="editToggle">

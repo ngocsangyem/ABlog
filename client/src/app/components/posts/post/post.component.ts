@@ -11,6 +11,7 @@ export class PostComponent implements OnInit {
 	editToggle = false;
 	@Input() post: Post;
 	@Output() updatePostEvent: EventEmitter<Post> = new EventEmitter<Post>();
+	@Output() deletePostEvent: EventEmitter<Post> = new EventEmitter<Post>();
 	constructor(private auth: AuthService) {}
 
 	ngOnInit() {}
@@ -22,5 +23,9 @@ export class PostComponent implements OnInit {
 	updatePost() {
 		this.updatePostEvent.emit(this.post);
 		this.editToggle = false;
+	}
+
+	deletePost() {
+		this.deletePostEvent.emit(this.post);
 	}
 }
