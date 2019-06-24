@@ -7,7 +7,7 @@ import { PostsComponent } from './components/posts/posts.component';
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-	// { path: '', redirectTo: 'posts', pathMatch: 'full' },
+	{ path: '', redirectTo: '/posts', pathMatch: 'full' },
 	{
 		path: 'login',
 		component: LoginComponent

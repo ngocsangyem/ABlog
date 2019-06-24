@@ -8,21 +8,15 @@ const updateArticle = router.put('/:id', (req, res, next) => {
 	let postData = req.body;
 	let post = new Post({
 		title: postData.title,
-		image: postData.image,
 		description: postData.description
 	});
-	if (!post.title || !post.image) {
-		res.status(400);
-		res.json({
-			Error: 'Some things wrong with data'
+	Post.findByIdAndUpdate({ _id: req.params.id }, postData).then(() => {
+		Post.findOne({
+			_id: req.params.id
+		}).then(post => {
+			res.send(post);
 		});
-	} else {
-		Post.findByIdAndUpdate({ _id: req.params.id }, post).then(() => {
-			Post.findOne({ _id: req.params.id }).then(post => {
-				res.send(post);
-			});
-		});
-	}
+	});
 });
 
 export default updateArticle;

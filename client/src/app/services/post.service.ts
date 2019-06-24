@@ -31,10 +31,6 @@ export class PostService {
 
 		console.log(this.putUrl + newPost._id);
 
-		return this.http
-			.put<any>(this.putUrl + newPost._id, JSON.stringify(newPost), {
-				headers: header
-			})
-			.pipe(map(res => res.json));
+		return this.http.put<any>(this.putUrl + newPost._id, newPost);
 	}
 }

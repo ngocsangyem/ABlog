@@ -16,7 +16,8 @@ app.use(cors());
 mongoose.connect(db, err => {
 	err ? console.log(err) : console.log('Conected to mongodb');
 });
-mongoose.model('posts', { name: String });
+// mongoose.model('posts', { name: String });
+mongoose.set('useFindAndModify', false);
 
 // View engine
 app.set('views', path.join(__dirname, 'views'));
