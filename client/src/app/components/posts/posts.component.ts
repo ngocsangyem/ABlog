@@ -25,10 +25,10 @@ export class PostsComponent implements OnInit {
 	}
 
 	private getPostDate(): string {
-		let date = new Date();
-		let day = date.getDay();
-		let month = date.getMonth();
-		let year = date.getFullYear();
+		const date = new Date();
+		const day = date.getDate();
+		const month = date.getMonth() + 1;
+		const year = date.getFullYear();
 
 		return `${day}/${month}/${year}`;
 	}
@@ -37,18 +37,15 @@ export class PostsComponent implements OnInit {
 		this.toggleForm = !this.toggleForm;
 	}
 
-	addPost(event) {
-		let newPost: Post = {
-			title: this.title,
-			image: this.image,
-			description: this.description,
-			createDate: this.getPostDate()
-		};
-		this.postService.onAddPost(newPost).subscribe(post => {
-			this.posts.unshift(post);
-			this.title = '';
-			this.description = '';
-			this.image = '';
+	onAddPost(post: Post) {
+		this.postService.onAddPost(post).subscribe(newPost => {
+			this.posts.push(newPost);
 		});
+	}
+
+	onUpdatePost(post: Post) {
+		this.postService
+			.onUpdatePost(post)
+			.subscribe(postUpdated => console.log(postUpdated));
 	}
 }

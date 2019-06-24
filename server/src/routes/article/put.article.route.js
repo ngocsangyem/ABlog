@@ -5,11 +5,24 @@ const Post = require('../../model/post');
 
 /* update an existing post in database */
 const updateArticle = router.put('/:id', (req, res, next) => {
-	Post.findByIdAndUpdate({ _id: req.params.id }, req.body).then(() => {
-		Post.findOne({ _id: req.params.id }).then(post => {
-			res.send(post);
-		});
+	let postData = req.body;
+	let post = new Post({
+		title: postData.title,
+		image: postData.image,
+		description: postData.description
 	});
+	if (!post.title || !post.image) {
+		res.status(400);
+		res.json({
+			Error: 'Some things wrong with data'
+		});
+	} else {
+		Post.findByIdAndUpdate({ _id: req.params.id }, post).then(() => {
+			Post.findOne({ _id: req.params.id }).then(post => {
+				res.send(post);
+			});
+		});
+	}
 });
 
 export default updateArticle;

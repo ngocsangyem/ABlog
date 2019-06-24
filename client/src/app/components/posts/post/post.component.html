@@ -1,5 +1,5 @@
-<div class="post" [id]="post.id">
-	<a class="post-container" href="#">
+<div class="post" [id]="post._id">
+	<div class="post-container" href="#">
 		<figure>
 			<img [src]="post.image" alt="" srcset="">
 		</figure>
@@ -10,14 +10,31 @@
 			<div class="post-content">
 				<p>{{post.description}}</p>
 			</div>
-			<small class="post-date">{{post.createDate | date: 'shortDate'}}</small>
-			<div class="post-detail">
+			<!-- <small class="post-date">{{post.createDate | date: 'shortDate'}}</small> -->
+			<a class="post-detail">
 				View detail
-			</div>
+			</a>
 		</div>
 		<div *ngIf="auth.logged()" class="post-option">
-			<span class="mdi mdi-circle-edit-outline"></span>
+			<span class="mdi mdi-circle-edit-outline" (click)="editPostBtn()"></span>
 			<span class="mdi mdi-delete"></span>
 		</div>
-	</a>
+	</div>
+	<div class="container container-form" *ngIf="editToggle">
+		<form class="update-form" action="" autocomplete="off">
+			<fieldset>
+				<input id="title" type="text" name="title" required [(ngModel)]="post.title">
+				<label for="title">Title</label>
+				<div class="after"></div>
+			</fieldset>
+			<fieldset>
+				<textarea name="description" id="description" cols="30" [(ngModel)]="post.description"></textarea>
+				<label for="password">Description</label>
+				<div class="after"></div>
+			</fieldset>
+			<fieldset>
+				<button type="button" (click)="updatePost()">Update</button>
+			</fieldset>
+		</form>
+	</div>
 </div>

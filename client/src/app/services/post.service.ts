@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 })
 export class PostService {
 	private postsUrl = 'http://localhost:3000/posts';
+	private putUrl = 'http://localhost:3000/posts/';
 	private posts: Post[];
 
 	constructor(private http: HttpClient) {}
@@ -16,11 +17,24 @@ export class PostService {
 		return this.http.get<any>(this.postsUrl);
 	}
 
-	onAddPost(newPost) {
+	onAddPost(newPost: Post) {
 		const header = new HttpHeaders();
-		console.log(newPost);
+		header.append('Content-Type', 'application/json');
+		return this.http.post<any>(this.postsUrl, newPost, { headers: header });
+	}
+
+	onUpdatePost(newPost: Post) {
+		const header = new HttpHeaders();
 
 		header.append('Content-Type', 'application/json');
-		return this.http.post<any>(this.postsUrl, newPost);
+		console.log(newPost);
+
+		console.log(this.putUrl + newPost._id);
+
+		return this.http
+			.put<any>(this.putUrl + newPost._id, JSON.stringify(newPost), {
+				headers: header
+			})
+			.pipe(map(res => res.json));
 	}
 }

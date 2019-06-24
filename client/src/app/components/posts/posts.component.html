@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<app-post *ngFor="let post of posts" [post]="post"></app-post>
+		<app-post *ngFor="let post of posts" [post]="post" (updatePostEvent)="onUpdatePost($event)"></app-post>
 	</div>
 	<div *ngIf="auth.logged()" class="add-post-btn">
 		<div class="container">
@@ -14,19 +14,20 @@
 
 <div class="container-form">
 	<div class="row">
-		<form [ngClass]="{active: toggleForm}" class="add-form" action="" autocomplete="off" (submit)="addPost($event)">
+		<form [ngClass]="{active: toggleForm}" #form="ngForm" class="add-form" action="" autocomplete="off"
+			(submit)="onAddPost(form.value)">
 			<fieldset>
-				<input [(ngModel)]="title" id="title" type="text" name="title" required>
+				<input ngModel id="title" type="text" name="title" required>
 				<label for="title">Title</label>
 				<div class="after"></div>
 			</fieldset>
 			<fieldset>
-				<input [(ngModel)]="image" id="image" type="text" name="image" required>
+				<input ngModel id="image" type="text" name="image" required>
 				<label for="image">Image url</label>
 				<div class="after"></div>
 			</fieldset>
 			<fieldset>
-				<textarea [(ngModel)]="description" name="description" id="description" cols="30" rows="10"></textarea>
+				<textarea ngModel name="description" id="description" cols="30" rows="10"></textarea>
 				<label for="email">Description</label>
 				<div class="after"></div>
 			</fieldset>
