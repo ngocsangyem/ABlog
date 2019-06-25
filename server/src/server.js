@@ -7,15 +7,21 @@ const api = require('./routes/users/user.routes');
 const app = express();
 const cors = require('cors');
 // conection string
-const db = 'mongodb://admin:admin%40123@ds231517.mlab.com:31517/blogdb';
+const db = 'mongodb://admin:admin1%403@ds343217.mlab.com:43217/ablog';
 
 // Cors
 app.use(cors());
 
 // Conect to database
-mongoose.connect(db, err => {
-	err ? console.log(err) : console.log('Conected to mongodb');
-});
+mongoose.connect(
+	db,
+	err => {
+		err ? console.log(err) : console.log('Conected to mongodb');
+	},
+	{
+		useMongoClient: true
+	}
+);
 // mongoose.model('posts', { name: String });
 mongoose.set('useFindAndModify', false);
 
@@ -24,7 +30,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 // Set static folder
-app.use(express.static(path.join(__dirname, 'client')));
+app.use(express.static(path.join(__dirname, '../public')));
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, '../public/index.html'));
+});
 
 // Call route
 import * as usersRouter from './routes/users/user.routes';
@@ -47,7 +56,7 @@ app.use('/users', [
 	usersRouter.deleteUser
 ]);
 
-app.use('/posts', [
+app.use('/post-list', [
 	articleRouter.getAllArticle,
 	articleRouter.getSingleArticle,
 	articleRouter.addArticle,
