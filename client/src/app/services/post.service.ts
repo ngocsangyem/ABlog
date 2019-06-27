@@ -33,4 +33,10 @@ export class PostService {
 	onDeletePost(post: Post) {
 		return this.http.delete<any>(this.actionUrl + post._id);
 	}
+
+	sortPost(posts: Post[]) {
+		posts.sort((a: Post, b: Post) => {
+			return a.createDate.valueOf() - b.createDate.valueOf();
+		});
+	}
 }

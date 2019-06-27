@@ -23,7 +23,8 @@ import { TokenInterceptorService } from './services/token-auth.service';
 		PostComponent,
 		EditComponent,
 		RegisterComponent,
-		LoginComponent
+		LoginComponent,
+		OrderByDatePipe
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
 	providers: [

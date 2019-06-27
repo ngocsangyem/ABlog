@@ -4,6 +4,6 @@ export class Post {
 		public title: string,
 		public image: string,
 		public description: string,
-		public createDate: string
+		public createDate: number
 	) {}
 }

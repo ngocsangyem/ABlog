@@ -20,9 +20,8 @@ const addArticle = router.post('/', (req, res, next) => {
 		title: postData.title,
 		image: postData.image,
 		description: postData.description,
-		createDate: new Date()
+		createDate: getPostDate()
 	});
-	console.log(post);
 
 	if (!post.title || !post.image) {
 		res.status(400);
