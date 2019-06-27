@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Post = require('../../model/post');
 
 /* update an existing post in database */
-const updateArticle = router.put('/:id', (req, res, next) => {
+const updateArticle = router.put('/post/:id', (req, res, next) => {
 	let postData = req.body;
 	let post = new Post({
 		title: postData.title,

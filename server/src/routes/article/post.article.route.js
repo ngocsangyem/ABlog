@@ -5,7 +5,7 @@ const Post = require('../../model/post');
 /**
  * Add new article
  */
-const addArticle = router.post('/', (req, res, next) => {
+const addArticle = router.post('/post', (req, res, next) => {
 	let postData = req.body;
 	let post = new Post({
 		title: postData.title,

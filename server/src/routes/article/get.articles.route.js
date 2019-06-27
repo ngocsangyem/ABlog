@@ -7,7 +7,7 @@ const Post = require('../../model/post');
  * - Token is verify then the code will executed
  */
 
-export const getAllArticle = router.get('/', (req, res, next) => {
+export const getAllArticle = router.get('/posts', (req, res, next) => {
 	Post.find((err, posts) => {
 		if (err) {
 			res.status(500).send('Error with posts');

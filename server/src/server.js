@@ -31,9 +31,6 @@ app.set('view engine', 'pug');
 
 // Set static folder
 app.use(express.static(path.join(__dirname, '../public')));
-app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, '../public/index.html'));
-});
 
 // Call route
 import * as usersRouter from './routes/users/user.routes';
@@ -43,12 +40,12 @@ import * as articleRouter from './routes/article/article.routes';
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Init app
+// Call routes
 app.get('/', (req, res) => {
 	res.render('index');
 });
 
-app.use('/users', [
+app.use('/api/users', [
 	usersRouter.registerUser,
 	usersRouter.loginUser,
 	usersRouter.getAllUser,
@@ -56,7 +53,7 @@ app.use('/users', [
 	usersRouter.deleteUser
 ]);
 
-app.use('/post-list', [
+app.use('/api/post-list', [
 	articleRouter.getAllArticle,
 	articleRouter.getSingleArticle,
 	articleRouter.addArticle,
@@ -64,7 +61,11 @@ app.use('/post-list', [
 	articleRouter.updateArticle
 ]);
 
-// app.use("/api", api);
+// Init app
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, '../public/index.html'));
+});
+
 app.listen(port, () => {
 	console.log('Server running on localhost:' + port);
 });
