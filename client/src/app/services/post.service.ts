@@ -7,8 +7,8 @@ import { map } from 'rxjs/operators';
 	providedIn: 'root'
 })
 export class PostService {
-	private postsUrl = 'api/post-list/posts';
-	private actionUrl = 'api/post-list/post/';
+	private postsUrl = 'api/posts';
+	private actionUrl = 'api/posts/';
 	private posts: Post[];
 
 	constructor(private http: HttpClient) {}

@@ -53,7 +53,7 @@ app.use('/api/users', [
 	usersRouter.deleteUser
 ]);
 
-app.use('/api/post-list', [
+app.use('/api/posts', [
 	articleRouter.getAllArticle,
 	articleRouter.getSingleArticle,
 	articleRouter.addArticle,

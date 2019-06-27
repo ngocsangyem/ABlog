@@ -785,8 +785,8 @@ __webpack_require__.r(__webpack_exports__);
 let PostService = class PostService {
     constructor(http) {
         this.http = http;
-        this.postsUrl = 'api/post-list/posts';
-        this.actionUrl = 'api/post-list/post/';
+        this.postsUrl = 'api/posts';
+        this.actionUrl = 'api/posts/';
     }
     getPostService() {
         return this.http.get(this.postsUrl);
