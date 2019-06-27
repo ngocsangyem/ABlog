@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const port = process.env.PORT || 8080;
+const port = 3000;
 const api = require('./routes/users/user.routes');
 const app = express();
 const cors = require('cors');
@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
 	res.render('index');
 });
 
-app.use('/users', [
+app.use('/api/users', [
 	usersRouter.registerUser,
 	usersRouter.loginUser,
 	usersRouter.getAllUser,
@@ -47,7 +47,7 @@ app.use('/users', [
 	usersRouter.deleteUser
 ]);
 
-app.use('/posts', [
+app.use('/api/posts', [
 	articleRouter.getAllArticle,
 	articleRouter.getSingleArticle,
 	articleRouter.addArticle,

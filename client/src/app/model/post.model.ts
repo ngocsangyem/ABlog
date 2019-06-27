@@ -3,6 +3,7 @@ export class Post {
 		public _id: string,
 		public title: string,
 		public image: string,
-		public description: string
+		public description: string,
+		public createDate: string
 	) {}
 }
